@@ -1,0 +1,33 @@
+{
+    "name": "frank-houweling/zend-log-doctrine-writer",
+    "description": "Doctrine Writer for Zend Log",
+    "type": "library",
+    "license": "GPL-2.0",
+    "keywords": [
+        "doctrine",
+        "zend log",
+        "logger",
+        "zend framework",
+        "logging",
+        "zf3",
+        "zend"
+    ],
+    "homepage": "http://www.senet.nl/",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.0",
+        "doctrine/doctrine-orm-module": "^1.1",
+        "zendframework/zend-log": "^2.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "FrankHouweling\\ZendLogDoctrineWriter\\": "src/"
+        }
+    },
+    "extra": {
+        "zf": {
+            "component": "FrankHouweling\\ZendLogDoctrineWriter"
+        }
+    }
+ }
