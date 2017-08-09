@@ -29,10 +29,12 @@ class DoctrineWriter extends AbstractWriter
 
     /**
      * DoctrineWriter constructor.
-     * @param array|null|\Traversable $entityClass
+     *
+     * @param string $entityClass
+     * @param array $mapping
      * @param null $options
      */
-    public function __construct(EntityManager $em, $entityClass, $mapping = null, $options = null)
+    public function __construct(EntityManager $em, string $entityClass, $mapping = null, $options = null)
     {
         if(!class_exists($entityClass))
         {
@@ -62,6 +64,7 @@ class DoctrineWriter extends AbstractWriter
         $hydrator->hydrate($event, $entity);
 
         $this->entityManager->persist($entity);
+        $this->entityManager->flush();
     }
 
     /**

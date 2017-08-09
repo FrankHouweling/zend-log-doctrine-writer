@@ -1,0 +1,146 @@
+<?php
+/*
+* Copyright (C) Senet Eindhoven B.V. - All Rights Reserved
+* Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Written by Frank Houweling <fhouweling@senet.nl>, 8/9/2017
+*/
+
+
+namespace FrankHouweling\ZendLogDoctrineWriter\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class LogMessage
+ *
+ * @ORM\Entity
+ * @package FrankHouweling\ZendLogDoctrineWriter\Entity
+ */
+class LogMessage
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer", name="logMessageId")
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $timestamp;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    private $priority;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $message;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $extraData;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+    /**
+     * @param \DateTime $timestamp
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    /**
+     * @param int $priority
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * @param string $message
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+    }
+
+    /**
+     * @return string
+     */
+    public function getExtraData()
+    {
+        return $this->extraData;
+    }
+
+    /**
+     * @param string $extraData
+     */
+    public function setExtraData($extraData)
+    {
+        $this->extraData = $extraData;
+    }
+
+    /**
+     * @return array
+     */
+    public function getExtra(): array
+    {
+        return json_decode($this->getExtraData(), true);
+    }
+
+    public function setExtra(array $data)
+    {
+        $this->setExtraData(json_encode($data));
+    }
+}
