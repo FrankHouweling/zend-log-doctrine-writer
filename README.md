@@ -17,11 +17,11 @@ to the doctrine entitymanager.
 
 The writer can be used as follows:
 ```php
-    $em = $container->get(EntityManager::class);
-    $doctrineWriter = new DoctrineWriter($em, LogMessage::class);
-    
-    $logger = new Logger();
-    $logger->addWriter($doctrineWriter);
+$em = $container->get(EntityManager::class);
+$doctrineWriter = new DoctrineWriter($em, LogMessage::class);
+
+$logger = new Logger();
+$logger->addWriter($doctrineWriter);
 ```
 
 A mapping can be given as a third parameter, to change the attributes in which log data is stored.
